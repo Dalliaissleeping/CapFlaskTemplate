@@ -45,6 +45,7 @@ def postNew():
             # the right side is the data the user entered which is held in the form object.
             subject = form.subject.data,
             content = form.content.data,
+            rating = form.rating.data, 
             author = current_user.id,
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
@@ -90,6 +91,7 @@ def postEdit(postID):
     if form.validate_on_submit():
         editPost.update(
             subject = form.subject.data,
+            rating = form.rating.data,
             content = form.content.data,
             modifydate = dt.datetime.utcnow
         )
@@ -97,6 +99,7 @@ def postEdit(postID):
 
     form.subject.data = editPost.subject
     form.content.data = editPost.content
+    form.rating.data = editPost.rating
 
     return render_template('postform.html',form=form)
 
@@ -109,6 +112,8 @@ def commentNew(postID):
         newComment = Comment(
             author = current_user.id,
             post = postID,
+#Make sure to check this one
+            rating = form.rating.data,
             content = form.content.data
         )
         newComment.save()
