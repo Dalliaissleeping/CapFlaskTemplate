@@ -55,3 +55,13 @@ def profileEdit():
     form.secrole.data = current_user.secrole
 
     return render_template('profileform.html', form=form)
+
+    #My audio suggestions is below 
+#if form.audio_suggestion.data:
+            #if audio_suggestions.audio_viet:
+                #audio_suggestions.audio_viet.delete()
+            #audio_suggestions.audio_viet.put(form.audio_viet.data, content_type = 'image/jpeg')
+            # This saves all the updates
+            #audio_suggestions.save()
+        # Then sends the user to their profle page
+        #return redirect(url_for('myProfile'))

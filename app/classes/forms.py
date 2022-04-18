@@ -64,7 +64,10 @@ class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     rating = SelectField('Give a rating from 1 through 5', choices = [("1", "1"),("2", "2"), ("3","3"), ("4","4"), ("5","5")])
     content = TextAreaField('Post', validators=[DataRequired()])
+    audio= FileField('Input your audio file here')
+    experience = StringField('Write down how to experienced this')
     submit = SubmitField('Post')
+
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])

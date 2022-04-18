@@ -99,13 +99,10 @@ def postNew():
             rating = form.rating.data, 
             author = current_user.id,
             experience = form.experience.data, 
+
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
-        if form.audio.data:
-            newPost.audio.put(form.audio.data, content_type = 'audio/mp3')
-            # This saves all the updates
-            newPost.save()
         # This is a method that saves the data to the mongoDB database.
         newPost.save()
 
@@ -147,7 +144,7 @@ def postEdit(postID):
             subject = form.subject.data,
             rating = form.rating.data,
             content = form.content.data,
-            experience = form.experience.data,
+            experience = form.experience.data
             
             modifydate = dt.datetime.utcnow
         )
@@ -182,8 +179,10 @@ def commentNew(postID):
         newComment = Comment(
             author = current_user.id,
             post = postID,
-            #Make sure to check this one
-            content = form.content.data
+#Make sure to check this one
+            rating = form.rating.data,
+            content = form.content.data,
+            experience = form.experience.data
         )
         newComment.save()
         return redirect(url_for('post',postID=postID))

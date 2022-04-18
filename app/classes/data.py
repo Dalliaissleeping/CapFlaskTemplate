@@ -46,17 +46,25 @@ class User(UserMixin, Document):
             return
         return User.objects.get(pk=id)
 
+
+
+#Audio files of languages is in this 
 class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     subject = StringField()
     content = StringField()
     rating = StringField()
+    audio = FileField()
+    experience = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
 
     meta = {
         'ordering': ['-createdate']
     }
+
+
+
 
 class Comment(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 

@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
 {% block body %}
-        <h1></h1>
+        <h1>Form</h1>
+            <!--List all errors in a group at the top-->
+            {% for field in form.errors %}
+                {% for error in form.errors[field] %}
+                    <div class="alert alert-error">
+                        <strong>Error!</strong>{{field}}: {{error}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
 
-        <form method=post>
+        <form method=post enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <p>
                 {{ form.subject.label }} <br>
@@ -22,6 +30,22 @@
                 {% endfor %}
             </p>
 
+            <p>
+                {{ form.experience.label }} <br> 
+                {{ form.experience() }} <br>
+                <!--List the errors for this field-->
+                {% for error in form.experience.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.audio.label }} <br> 
+                {{ form.audio() }} <br>
+                <!--List the errors for this field-->
+                {% for error in form.audio.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
             <p>
                 {{ form.rating.label }} <br> 
                 {{ form.rating() }} <br>
