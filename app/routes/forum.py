@@ -103,11 +103,9 @@ def postNew():
             modifydate = dt.datetime.utcnow
         )
         if form.audio.data:
-            newPost.audio.put(form.audio.data, content_type = 'audio/mp3')
-            # This saves all the updates
+            newPost.audio.put(form.audio.data, content_type = 'audio/mpeg')
+            # This is a method that saves the data to the mongoDB database.
             newPost.save()
-        # This is a method that saves the data to the mongoDB database.
-        newPost.save()
 
         # Once the new post is saved, this sends the user to that post using redirect.
         # and url_for. Redirect is used to redirect a user to different route so that 

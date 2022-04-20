@@ -25,8 +25,9 @@
         {% endif %}
         {{post.content}} <br>
         {{post.rating}} <br>
-        <audio src="data:audio;base64,{{base64encode(post.audio.read())}}"controls><source src="data:audio;base64,{{base64encode(post.audio.read())}}" type="audio/mp4" ></audio> <br>
-      
+        {% if post.audio %}
+            <audio src="data:audio;base64,{{base64encode(post.audio.read())}}"controls><source src="data:audio;base64,{{base64encode(post.audio.read())}}" type="audio/mp3" ></audio> <br>
+        {% endif %}
         {{post.audio}}
     </p>
     <a href="/comment/new/{{post.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
